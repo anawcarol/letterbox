@@ -13,7 +13,7 @@ public class Obra {
 	    private int anoLancamento;
 	    private String genero;
 	    private int classifacao;
-	    static Map<Integer, Obra> map = new HashMap<>();
+	    protected Map<Integer, Obra> map = new HashMap<>();
 
 	    public Obra(int idObra, String titulosa, String diretor, int anoLancamento, String generolo, int classifacao) {
 	        this.idObra = idObra;
@@ -87,12 +87,12 @@ public class Obra {
 			this.idObra = idObra;
 		}
 
-		public String getTitulosa() {
+		public String getTitulo() {
 			return titulo;
 		}
 
-		public void setTitulosa(String titulosa) {
-			this.titulo = titulosa;
+		public void setTitulo(String titulo) {
+			this.titulo = titulo;
 		}
 
 		public String getDiretor() {

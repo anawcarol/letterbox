@@ -6,7 +6,7 @@ import java.util.List;
 public class ObrasAssistidas {
     private List<Obra> obrasAssistidas;
     private List<Obra> obrasFavoritas; // Adicionando uma lista separada para obras favoritas
-
+    
     public ObrasAssistidas() {
         this.obrasAssistidas = new ArrayList<>();
         this.obrasFavoritas = new ArrayList<>();
