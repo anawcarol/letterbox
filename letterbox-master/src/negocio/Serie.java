@@ -3,24 +3,58 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Serie extends Obra {
 	
 	private int numEpisodeos;
 	private int numTemporada;
-	private String elencoRecorrente;
 	private double duracao; 
+	private String elencoRecorrente;
+	private String sinopseEp;
 
-
+  	
 	public Serie(int idObra, String titulosa, String diretor, int anoLancamento, String generolo, int classifacao,
-			int numEpisodeos, int numTemporada, String elencoRecorrente, double duracao) {
+			int numEpisodeos, int numTemporada, double duracao, String elencoRecorrente, String sinopseEp) {
 		super(idObra, titulosa, diretor, anoLancamento, generolo, classifacao);
 		this.numEpisodeos = numEpisodeos;
 		this.numTemporada = numTemporada;
-		this.elencoRecorrente = elencoRecorrente;
 		this.duracao = duracao;
+		this.elencoRecorrente = elencoRecorrente;
+		this.sinopseEp = sinopseEp;
 	}
 
+	 public List<String> listarElencoRecorrente() {
+	        List<String> elenco = new ArrayList<>();
+
+	        // Supondo que o elencoRecorrente seja uma string com nomes de atores separados por vírgula
+	        String[] atores = this.elencoRecorrente.split(",");
+
+	        for (String nomeAtor : atores) {
+	            // Adicionando o nome do ator à lista
+	            elenco.add(nomeAtor.trim());
+	        }
+
+	        return elenco;
+	    }
+	    
+
+	    public String buscarNumeroTemporada() {
+	        @SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+
+	        int numeroTemporada = scanner.nextInt();      
+
+	        List<String> elencoRecorrente = listarElencoRecorrente(); // Utilizando o método já existente
+	        
+	        // Convertendo o número da temporada para String e adicionando um caractere de separação
+	        String representacaoTemporada = String.valueOf(numeroTemporada) + " - ";
+
+	        // Concatenando a representação da temporada com a lista de elenco
+	        return representacaoTemporada + String.join(", ", elencoRecorrente);
+	    }
+
+	
 	public double calcularMediaDuracao() {
 	    double somaDuracoes = 0;
 	    int numSeries = 0;
@@ -42,19 +76,19 @@ public class Serie extends Obra {
 	
 
     public List<Serie> listarElencoRecorrente(String ator) {
-        List<Serie> seriesComAtor = new ArrayList<>();
+        List<Serie> Ator = new ArrayList<>();
 
-        for (Map.Entry<Integer, Obra> entry : map.entrySet()) {
-            Obra obra = entry.getValue();
+        for (Map.Entry<Integer, Obra> corre : map.entrySet()) {
+            Obra obra = corre.getValue();
             if (obra instanceof Serie) {
                 Serie serie = (Serie) obra;
                 if (serie.getElencoRecorrente().contains(ator)) {
-                    seriesComAtor.add(serie);
+                    Ator.add(serie);
                 }
             }
         }
 
-        return seriesComAtor;
+        return Ator;
     }
 	
 	public double getDuracao() {

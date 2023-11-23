@@ -1,4 +1,4 @@
-package Dados;
+package dados;
 
 import negocio.*;
 
@@ -196,16 +196,22 @@ public class Dados {
 	}
 
 	public void preencherDados() {
-		for(int i = 0; i < 10; i++) {
-			String s = String.valueOf(i);
-			usuarios[i] = new Usuario("idUsuario".concat(s),"nome".concat(s), "email".concat(s),"senha".concat(s)); 
-			filmes[i]= new Filme("idObra".concat(s),"titulo".concat(s),"diretor".concat(s),"anoLancamento".concat(s),"genero".concat(s),"sinopse".concat(s),"classificao".concat(s),"duracao".concat(s),"elencoFixo".concat(s));
-			series[i]= new Serie("idObra".concat(s),"titulo".concat(s),"diretor".concat(s),"anoLancamento".concat(s),"genero".concat(s),"sinopse".concat(s),"classificao".concat(s),"numEpisodios".concat(s),"numTemporada".concat(s),"elencoRecorrente".concat(s));
-			comentarios[i]= new Comentario(usuarios[i], "data".concat(s),"conteudo".concat(s),"idComentario".concat(s), i);
-			obrasAssistidas[i]=("idObra".concat(s),"idUsuario".concat(s));
-			obrasAssistidas[i] = new ObrasAssistidas(); 
-	        obrasAssistidas[i].setFilme(filmes[i]);     
-	        obrasAssistidas[i].setSerie(series[i]);
-			}
-	}
-}
+	    for (int i = 0; i < 10; i++) {
+	        String s = String.valueOf(i);
+	        usuarios[i] = new Usuario(i, "nome".concat(s), "email".concat(s), "senha".concat(s));
+	        filmes[i] = new Filme(i, "titulo".concat(s), "diretor".concat(s), i, "genero".concat(s), i, i, true, "trailer".concat(s), "elencoFixo".concat(s));
+	        series[i] = new Serie(i, "titulo".concat(s), "diretor".concat(s), i, "genero".concat(s), i, i, i, i, "elencoRecorrente".concat(s), "sinopseEp".concat(s));
+	        comentarios[i] = new Comentario(usuarios[i], "data".concat(s), "conteudo".concat(s), i, i);
+	        
+	        // Criar o objeto obrasAssistidas[i] antes de acessar os métodos
+	        obrasAssistidas[i] = new ObrasAssistidas();
+	        
+	        obrasAssistidas[i].adicionarObraAssistida(filmes[i]);
+	        obrasAssistidas[i].adicionarObraAssistida(series[i]);
+	        obrasAssistidas[i].adicionarObraFavorita(filmes[i]);
+	        obrasAssistidas[i].adicionarObraFavorita(series[i]);
+	    }
+	}}
+
+
+

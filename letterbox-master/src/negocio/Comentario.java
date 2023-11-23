@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class Comentario {
@@ -15,7 +16,7 @@ public class Comentario {
     private int i;
 
 	public Comentario(Usuario autor, String data, String conteudo, int idCometario, int nota) {
-		super();
+		
 		this.autor = autor;
 		this.data = data;
 		this.conteudo = conteudo;
@@ -36,14 +37,22 @@ public class Comentario {
 	    }
 	 
 	
-	 
-	public double mediaAvaliacao(Comentario comentario) {
-		double soma = 0;
-		for(int k = 0; k <= i; k++) {
-			soma += comentario.getNota();
-		}
-		return soma/i;
-	}
+	
+
+	    public double mediaAvaliacao() {
+	        if (i == 0) {
+	            return 0; 	        }
+
+	        double soma = 0;
+
+	        for (Comentario comentario : map.values()) {
+	            soma += comentario.getNota();
+	        }
+
+	        return soma / i;
+	    }
+
+	   
 
 	@Override
 	public String toString() {

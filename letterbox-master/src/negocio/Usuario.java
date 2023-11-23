@@ -1,7 +1,9 @@
 package negocio;
 
 import java.util.HashMap;
+import negocio.Comentario;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class Usuario {
@@ -36,8 +38,12 @@ public void excluirUsuario(int idUsuario) {
 
 @Override
 public String toString() {
-	return "idUsuario = " + idUsuario + ", nome = " + nome + ", email = " + email + ", senha = " + senha
-			+ ", obrasAssistidas = " + obrasAssistidas  ;
+	return "idUsuario = " + idUsuario + "\n nome = " + nome + "\n email = " + email + "\n senha = " + senha
+			+ "\n obrasAssistidas = " + obrasAssistidas  ;
+}
+
+public List<Comentario> obterComentarios() {
+    return null;
 }
 
 
