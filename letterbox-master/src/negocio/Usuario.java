@@ -1,5 +1,6 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import negocio.Comentario;
 import java.util.Iterator;
@@ -12,6 +13,8 @@ public class Usuario {
 	private String email;
 	private String senha;
     static Map<Integer, Usuario> map = new HashMap<>();
+    private List<Comentario> comentarios = new ArrayList<>();
+
 
    private ObrasAssistidas obrasAssistidas;
 
@@ -85,6 +88,9 @@ public ObrasAssistidas getObrasAssistidas() {
 
 public void setObrasAssistidas(ObrasAssistidas obrasAssistidas) {
 	this.obrasAssistidas = obrasAssistidas;
+}
+public List<Comentario> obterComentarios1() {
+    return comentarios;
 }
    
 

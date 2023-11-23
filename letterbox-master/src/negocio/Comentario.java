@@ -23,10 +23,11 @@ public class Comentario {
 		this.idCometario = idCometario;
 		this.nota = nota;
 		map.put(idCometario, this);
+     
 		i++;
 	}
 	
-	 public void excluirObra(int idComentario) {
+	 public void excluirCometario(int idComentario) {
 	        Iterator<Map.Entry<Integer, Comentario>> iterator = map.entrySet().iterator();
 	        while (iterator.hasNext()) {
 	            Map.Entry<Integer, Comentario> entry = iterator.next();

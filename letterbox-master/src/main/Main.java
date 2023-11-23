@@ -54,6 +54,37 @@ public class Main {
                     int escolhaObra1 = in.nextInt();
                     Serie serie1 = d.getSeries()[escolhaObra1];
                     adicionarComentarioSerie(usuario1, serie1);
+                    break;
+              
+
+                
+
+                case 7:
+                    System.out.println("Digite o ID do usuário que deseja excluir: ");
+                    int idUsuarioExcluir = in.nextInt();
+                    for (Usuario usuario11 : d.getUsuarios()) {
+                        if (usuario11.getIdUsuario() == idUsuarioExcluir) {
+                            usuario11.excluirUsuario(idUsuarioExcluir);
+                            System.out.println("Usuário excluído com sucesso!\n");
+                            break;
+                        }
+                    }
+                    break;
+             
+
+                case 10:
+                    System.out.println("Digite o ID do comentário que deseja excluir: ");
+                    int idComentarioExcluir = in.nextInt();
+                    for (Comentario comentario : d.getComentarios()) {
+                        if (comentario.getIdCometario() == idComentarioExcluir) {
+                            comentario.excluirCometario(idComentarioExcluir);
+                            System.out.println("Comentário excluído com sucesso!\n");
+                            break;
+                        }
+                    }
+                    break;
+
+
                
                 default:
                     System.out.println("\nOpção Inválida!\n");
@@ -61,6 +92,13 @@ public class Main {
             }
         }
         in.close();
+    }
+    
+    public static int getSeries() {
+        return 0;
+    }
+    public static int getFilmes() {
+        return 0;
     }
 
     public static String imprimirMenu() {
@@ -115,38 +153,31 @@ public class Main {
     }
 
     public static Filme lerDadosFilme() {
-        int idObra;
-        String titulo;
-        String diretor;
-        int anoLancamento;
-        String genero;
-        int classifacao;
-        double duracao;
-        boolean oscar;
-        String trailer;
-        String elencoFixo;
-        idObra = (int) Math.random();
-
-        in.nextLine(); //esvazia dados do teclado
+        int idObra = (int) (Math.random() * 1000); 
+        in.nextLine(); 
         System.out.println("Digite o título do filme: ");
-        titulo = in.nextLine();
+        String titulo = in.nextLine();
         System.out.println("Digite o nome do diretor: ");
-        diretor = in.nextLine();
+        String diretor = in.nextLine();
         System.out.println("Digite o ano de lançamento do filme:");
-        anoLancamento = in.nextInt();
-        System.out.println("Digite o genero: ");
-        genero = in.nextLine();
-        System.out.println("Digite a classificacao: ");
-        classifacao = in.nextInt();
-        System.out.println("Digite a duracao: ");
-        duracao = in.nextDouble(); 
-        System.out.println("Digite se ele tem oscar: ");
-        oscar = in.nextBoolean();
-         System.out.println("digite a url do trailer: ");
-        trailer = in.nextLine();
-         System.out.println("Digite o elenco fixo: ");
-        elencoFixo = in.nextLine();
-        return new Filme(idObra,titulo,diretor, anoLancamento,genero,classifacao,duracao,oscar,trailer,elencoFixo);
+        int anoLancamento = in.nextInt();
+        in.nextLine(); 
+        System.out.println("Digite o gênero: ");
+        String genero = in.nextLine();
+        System.out.println("Digite a classificação: ");
+        int classificacao = in.nextInt();
+        in.nextLine(); 
+        System.out.println("Digite a duração: ");
+        double duracao = in.nextDouble();
+        in.nextLine(); 
+        System.out.println("Digite se ele tem Oscar (true/false): ");
+        boolean oscar = in.nextBoolean();
+        in.nextLine(); 
+        System.out.println("Digite a URL do trailer: ");
+        String trailer = in.nextLine();
+        System.out.println("Digite o elenco fixo: ");
+        String elencoFixo = in.nextLine();
+        return new Filme(idObra, titulo, diretor, anoLancamento, genero, classificacao, duracao, oscar, trailer, elencoFixo);
     }
 
    
@@ -222,8 +253,9 @@ public class Main {
     }
     public static void listarSeries() {
         for (int i = 0; i < d.getnSeries(); i++)
-            System.out.println(i + " -> " + d.getNomeSeries()[i].toString());
+            System.out.println(i + " -> " + d.getSeries()[i].toString());
     }
+
   
 
 
